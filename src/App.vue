@@ -1,28 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+    <v-app>
+        <v-app-bar app color="primary" dark>
+            <v-toolbar-title>Vue Form Validation</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn
+                v-for="link in links"
+                :key="`${link.label}-header-link`"
+                color="white"
+                text
+                rounded
+                class="my-2"
+                :to="link.url"
+            >
+                {{ link.label }}
+            </v-btn>
+        </v-app-bar>
+        <v-content>
+            <router-view></router-view>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
-  name: "app",
-  components: {
-    HelloWorld
-  }
+    mame: 'App',
+    data: () => ({
+        links: [
+            { label: 'Home', url: '/' },
+            { label: 'Vuetify', url: '/vuetify' },
+            { label: 'Vuelidate', url: '/Vuelidate' }
+        ]
+    })
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
