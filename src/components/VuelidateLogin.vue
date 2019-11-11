@@ -31,8 +31,7 @@
 </template>
 
 <script>
-import { required } from 
-  'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
 export default {
     name: 'VuelidateLogin',
     validations: {
@@ -42,14 +41,14 @@ export default {
     computed: {
         usernameErrors() {
             const errors = [];
-            !this.$v.username.required 
-              && errors.push('Username is required');
+            if (!this.$v.username.$dirty) return errors;
+            !this.$v.username.required && errors.push('Username is required');
             return errors;
         },
         passwordErrors() {
             const errors = [];
-            !this.$v.password.required 
-              && errors.push('Password is required');
+            if (!this.$v.password.$dirty) return errors;
+            !this.$v.password.required && errors.push('Password is required');
             return errors;
         }
     },
