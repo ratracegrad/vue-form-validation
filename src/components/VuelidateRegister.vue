@@ -40,16 +40,7 @@ export default {
         email: { required, email },
         password: {
             required,
-            minLength: minLength(5),
-            goodPassword: password => {
-                //a custom validator!
-                return (
-                    password.length >= 8 &&
-                    /[a-z]/.test(password) &&
-                    /[A-Z]/.test(password) &&
-                    /[0-9]/.test(password)
-                );
-            }
+            minLength: minLength(5)
         }
     },
     computed: {
